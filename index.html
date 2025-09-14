@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <form id="search-form" method="post">
+          <h1 id="city-name"></h1>
+          <div class="search-wrapper">
+            <input
+              class="search-input"
+              name="search"
+              placeholder="Поиск по городу..."
+              type="search"
+            />
+            <ul id="suggestions"></ul>
+          </div>
+          <button class="search-btn" type="submit">найти</button>
+        </form>
+      </header>
+
+      <div class="main" id="main">
+        <div id="loader"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

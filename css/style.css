@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: rgba(173, 216, 230, 0.25);
+}
+
+.wrapper {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  margin-top: 1.25rem;
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+}
+
+.city-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-right: 1.5rem;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#suggestions {
+  position: absolute;
+  /* height: 100px; */
+  width: 100%;
+  top: 100%;
+  border: 1px solid gray;
+  background-color: white;
+  border-top: none;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.search-btn {
+  border-style: solid;
+  border-color: gray;
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0;
+  flex: 0 0 auto;
+  border-width: 1px;
+  border-left: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #3498db; /* синий акцент */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.weather-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-auto-rows: 125px;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  justify-content: center;
+}
+
+.weather-card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(lightblue, lightyellow);
+  width: 100%;
+  outline: 1px solid rgba(0, 0, 255, 0.25);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
