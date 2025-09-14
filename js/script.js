@@ -39,7 +39,7 @@ function fetchWeather(city) {
       const lon = data[0].lon;
 
       fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=ru&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=ru&appid=${API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => {
