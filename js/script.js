@@ -5,7 +5,7 @@ const searchForm = document.getElementById("search-form");
 let cityName;
 
 window.onload = () => {
-  fetch("http://ip-api.com/json/")
+  fetch("https://ipapi.co/json/")
     .then((res) => res.json())
     .then((data) => {
       cityName = data.city;
@@ -31,7 +31,7 @@ searchForm.addEventListener("submit", (event) => {
 
 function fetchWeather(city) {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
   )
     .then((res) => res.json())
     .then((data) => {
