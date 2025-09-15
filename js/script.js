@@ -23,7 +23,7 @@ searchForm.addEventListener("submit", (event) => {
 
   if (searchCity) {
     cityName = searchCity;
-    document.getElementById('main').innerHTML = `<div id="loader"></div>`;
+    document.getElementById("main").innerHTML = `<div id="loader"></div>`;
     fetchWeather(cityName);
   }
   searchForm.reset();
@@ -35,6 +35,7 @@ function fetchWeather(city) {
   )
     .then((res) => res.json())
     .then((data) => {
+      const cityNameRu = data[0].local_names.ru;
       const lat = data[0].lat;
       const lon = data[0].lon;
 
@@ -45,7 +46,7 @@ function fetchWeather(city) {
         .then((data) => {
           console.log(data);
 
-          const city = data.city.name;
+          const city = cityNameRu;
           let h1 = document.getElementById("city-name");
           h1.innerText = city;
           h1.classList.add("city-name");
@@ -79,3 +80,27 @@ function fetchWeather(city) {
         });
     });
 }
+
+const searchInput = document.getElementById("search-input");
+
+const suggestions = document.getElementById("suggestions");
+
+const cities = document.getElementsByClassName("cities");
+
+searchInput.addEventListener("input", (event) => {
+  suggestions.style.display = "block";
+  const value = event.target.value.toLowerCase();
+
+  for (let city of cities) {
+    const isVisible = city.textContent.toLowerCase().includes(value);
+    city.classList.toggle("show", isVisible);
+
+    city.addEventListener("click", () => {
+      searchInput.value = city.textContent;
+    });
+  }
+});
+
+window.onclick = () => {
+  suggestions.style.display = "none";
+};
