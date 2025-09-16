@@ -4,24 +4,38 @@ const searchForm = document.getElementById("search-form");
 
 let cityName;
 
-window.onload = () => {
-  fetch("https://ipapi.co/json/")
-    .then((res) => res.json())
-    .then((data) => {
-      cityName = data.city;
+const container = document.querySelector(".main");
+const toggleBtn = document.getElementById("toggle-btn");
 
+toggleBtn.addEventListener("click", () => {
+  container.classList.toggle("collapsed");
+
+  if (container.classList.contains("collapsed")) {
+    toggleBtn.textContent = "Показать всё";
+  } else {
+    toggleBtn.remove();
+  }
+});
+
+window.onload = () => {
+  fetch("https://ipwho.is/").then((res) =>
+    res.json().then((data) => {
+      cityName = data.city;
       fetchWeather(cityName);
-    });
+    })
+  );
 };
 
 searchForm.addEventListener("submit", (event) => {
+  
   event.preventDefault();
-
+  
   formData = new FormData(searchForm);
 
   const searchCity = formData.get("search");
 
   if (searchCity) {
+    toggleBtn.style.display = 'none';
     cityName = searchCity;
     document.getElementById("main").innerHTML = `<div id="loader"></div>`;
     fetchWeather(cityName);
@@ -44,8 +58,6 @@ function fetchWeather(city) {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-
           const city = cityNameRu;
           let h1 = document.getElementById("city-name");
           h1.innerText = city;
@@ -76,6 +88,7 @@ function fetchWeather(city) {
                 <p>${description}</p>
               </div>
             `;
+            toggleBtn.style.display = "block";
           }
         });
     });
@@ -97,6 +110,7 @@ searchInput.addEventListener("input", (event) => {
 
     city.addEventListener("click", () => {
       searchInput.value = city.textContent;
+      searchInput.focus();
     });
   }
 });

@@ -39,9 +39,6 @@ li:hover {
 
 .wrapper {
   margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
 }
 
 .main {
@@ -109,16 +106,38 @@ li:hover {
 }
 
 #loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 50px;
   height: 50px;
   border: 4px solid #ddd;
   border-top: 4px solid #3498db; /* синий акцент */
   border-radius: 50%;
   animation: spin 1s linear infinite;
+}
+
+.collapsed {
+  max-height: 75dvh;
+  overflow: hidden;
+}
+
+.show-all-btn {
+  display: none;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: gray;
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0;
+  border-width: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
 }
 
 .weather-cards {
