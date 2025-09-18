@@ -27,15 +27,14 @@ window.onload = () => {
 };
 
 searchForm.addEventListener("submit", (event) => {
-  
   event.preventDefault();
-  
+
   formData = new FormData(searchForm);
 
   const searchCity = formData.get("search");
 
   if (searchCity) {
-    toggleBtn.style.display = 'none';
+    toggleBtn.style.display = "none";
     cityName = searchCity;
     document.getElementById("main").innerHTML = `<div id="loader"></div>`;
     fetchWeather(cityName);
@@ -77,15 +76,68 @@ function fetchWeather(city) {
             const temp = forecast.main.temp.toFixed(1);
             const description = forecast.weather[0].description;
 
+            let d = (description || "").toLowerCase();
+            let descIcon = d.includes("торнадо")
+              ? "🌪️"
+              : (d.includes("бур") &&
+                  (d.includes("пыл") || d.includes("пес"))) ||
+                d.includes("пыльная") ||
+                d.includes("песчаная")
+              ? "🌪️"
+              : d.includes("шкв")
+              ? "🌬️"
+              : d.includes("вулкан")
+              ? "🌋"
+              : d.includes("гроза")
+              ? "⛈️"
+              : d.includes("морось")
+              ? "🌦️"
+              : (d.includes("дожд") && d.includes("снег")) ||
+                d.includes("дождь со снегом") ||
+                d.includes("дождь и снег")
+              ? "🌨️"
+              : d.includes("ледяной")
+              ? "🧊"
+              : d.includes("ливн") || d.includes("ливень")
+              ? "🌧️"
+              : d.includes("дожд")
+              ? "🌧️"
+              : d.includes("мокрый") && d.includes("снег")
+              ? "🌨️"
+              : d.includes("снег") ||
+                d.includes("снеж") ||
+                d.includes("снегопад")
+              ? "❄️"
+              : d.includes("туман") ||
+                d.includes("дымк") ||
+                d.includes("мгла") ||
+                d.includes("туманность") ||
+                d.includes("дым")
+              ? "🌫️"
+              : d.includes("пыл") ||
+                d.includes("песок") ||
+                d.includes("пылевые") ||
+                d.includes("песчан")
+              ? "🌫️"
+              : d.includes("обла") ||
+                d.includes("пасмур") ||
+                d.includes("облач")
+              ? "☁️"
+              : d.includes("ясно")
+              ? "☀️"
+              : "🌍";
+
             document.querySelector(".weather-cards").innerHTML += `
               <div class='weather-card'>
-                <p>${objDate.toLocaleDateString("ru-RU", {
-                  weekday: "long",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}</p>
-                <p>${temp}°</p>
-                <p>${description}</p>
+              <div class="desc-group">
+              <p class="desc">${description}</p><p class="desc-icon">${descIcon}</p>
+              </div>
+              <p class="${temp >= 20 ? "red" : "blue"}">${temp}°C</p>
+              <p class="date">${objDate.toLocaleDateString("ru-RU", {
+                weekday: "long",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}</p>
               </div>
             `;
             toggleBtn.style.display = "block";
