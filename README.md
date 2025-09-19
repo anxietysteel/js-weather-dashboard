@@ -45,7 +45,8 @@ const API_KEY = "YOUR_API_KEY";
 
 | Mobile | Desktop |
 |--------|---------|
-| (./screenshots/WDscreen1.jpg) | (./screenshots/WDscreen2.jpg) |
+|![Mobile](./screenshots/WDscreen1.jpg) | ![Desktop](./screenshots/WDscreen2.jpg)|
+
 
 
 ## 📜 License
