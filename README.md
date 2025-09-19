@@ -32,7 +32,7 @@ The forecast is displayed in convenient cards with icons and temperature color h
    git clone https://github.com/username/weather-dashboard.git
 
 2. Navigate to the project folder:
-```bash
+
 cd weather-dashboard
 
 3. Open index.html in your browser.
