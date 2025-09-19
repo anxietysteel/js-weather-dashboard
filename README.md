@@ -33,15 +33,13 @@ The forecast is displayed in convenient cards with icons and temperature color h
 
 2. Navigate to the project folder:
 
-```bash
-cd weather-dashboard```
+`cd weather-dashboard`
 
 3. Open index.html in your browser.
 ⚠️ You need an OpenWeatherMap API key.
 Replace the API_KEY value in js/script.js with your own key:
 
-```bash
-const API_KEY = "YOUR_API_KEY";`
+`const API_KEY = "YOUR_API_KEY";`
 
 ## 📸 Screenshots
 
