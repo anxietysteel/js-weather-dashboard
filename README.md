@@ -41,8 +41,13 @@ Replace the API_KEY value in js/script.js with your own key:
 
 const API_KEY = "YOUR_API_KEY";
 
-📸 Screenshots
+## 📸 Screenshots
 
-📜 License
+| Mobile | Desktop |
+|--------|---------|
+| screenshots/WDscreen1.jpg | screenshots/WDscreen2.jpg |
+
+
+## 📜 License
 
 Free to use for learning and personal projects.
