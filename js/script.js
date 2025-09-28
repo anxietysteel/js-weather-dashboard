@@ -33,10 +33,17 @@ searchForm.addEventListener("submit", (event) => {
 
   const searchCity = formData.get("search");
 
+  const wrapper = document.querySelector(".wrapper");
+
+  // показываем loader
+  if (!document.getElementById("loader")) {
+    wrapper.insertAdjacentHTML("beforeend", '<div id="loader"></div>');
+  }
+
   if (searchCity) {
     toggleBtn.style.display = "none";
     cityName = searchCity;
-    document.getElementById("main").innerHTML = `<div id="loader"></div>`;
+    document.getElementById("main").innerHTML = ``;
     fetchWeather(cityName);
   }
   searchForm.reset();
@@ -61,6 +68,9 @@ function fetchWeather(city) {
           let h1 = document.getElementById("city-name");
           h1.innerText = city;
           h1.classList.add("city-name");
+
+          const existingLoader = document.getElementById("loader");
+          if (existingLoader) existingLoader.remove();
 
           const main = document.getElementById("main");
           main.innerHTML = `

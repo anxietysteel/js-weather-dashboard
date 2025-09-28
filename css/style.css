@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  background-color: rgba(173, 216, 230, 0.25);
+  background-color: white;
   min-width: 320px;
 }
 
@@ -44,6 +44,28 @@ li:hover {
 
 .main {
   margin-top: 1.25rem;
+  z-index: 0;
+}
+
+.collapsed {
+  max-height: 75dvh;
+  overflow: hidden;
+}
+
+.main.collapsed {
+  position: relative;
+}
+
+.main.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px; /* высота затенения */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 90%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 #search-form {
@@ -90,6 +112,7 @@ li:hover {
   background-color: white;
   border-top: none;
   display: none;
+  z-index: 5;
 }
 
 .search-input:focus {
@@ -123,11 +146,7 @@ li:hover {
   border-top: 4px solid #3498db; /* синий акцент */
   border-radius: 50%;
   animation: spin 1s linear infinite;
-}
-
-.collapsed {
-  max-height: 75dvh;
-  overflow: hidden;
+  z-index: 2;
 }
 
 .show-all-btn {
@@ -143,6 +162,7 @@ li:hover {
   font-size: 1rem;
   cursor: pointer;
   border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .show-all-btn:hover {
@@ -163,9 +183,9 @@ li:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5rem;
-  border-radius: 0.25rem;
-  background: rgba(173, 216, 230, 0.25);
   font-weight: 600;
+  background-color: rgba(211, 211, 211, 0.25);
+  border: 1px solid lightblue;
 }
 
 .date {
@@ -220,7 +240,20 @@ li:hover {
   }
 
   .collapsed {
-    max-height: 70dvh;
+    max-height: 75dvh;
     overflow: hidden;
+  }
+
+  .weather-cards {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+
+  .weather-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(173, 216, 230, 0.25);
+    font-weight: 600;
   }
 }
