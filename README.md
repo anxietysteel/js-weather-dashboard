@@ -29,7 +29,7 @@ The forecast is displayed in convenient cards with icons and temperature color h
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/anxietysteel/weather-dashboard.git
+   git clone https://github.com/anxietysteel/js-weather-dashboard.git
 
 2. Navigate to the project folder:
 
